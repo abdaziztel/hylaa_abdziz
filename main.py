@@ -96,7 +96,7 @@ def send_product_data_to_telegram(product_name, product_status, image_url, produ
         image_url = stored_image_url
 
     # Check if image_url is a local file path
-    if not image_url.startswith("http"):
+    if image_url == "notavaliable.jpg":
         with open(image_url, 'rb') as image_file:
             files = {'photo': image_file}
             data = {
@@ -119,7 +119,7 @@ def send_product_data_to_telegram(product_name, product_status, image_url, produ
     if response.status_code == 200:
         print(f"Product data sent successfully for {product_name}")
     else:
-        print(f"Failed to send product data for {product_name}. Status code: {response.status_code}, Response: {response.text}")
+        print(f"Failed to send product data for {product_name}. Status code: {response.status_code}")
 
 # Main function to run the code
 def main():
